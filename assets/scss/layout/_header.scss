@@ -1,0 +1,96 @@
+/* Header */
+.header {
+    position: fixed;
+    z-index: 999;
+    padding: 10px 10px 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    &__logo {
+        font-size: 1.25rem;
+        font-weight: 300;
+        
+        em{
+            font-weight: 600;
+            font-style: normal;
+        }
+    }
+}
+
+.menu-trigger {
+    width: 110px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    background-color: $color-black;
+    color: $color-white;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.menu {
+    position: fixed;
+    top:0;
+    right:0;
+    display: flex;
+    flex-direction: column;
+    background-color: $color-black;
+    color: $color-white;
+    padding: 75px 100px 50px 35px;
+    visibility: hidden;
+
+    &__close {
+        position: absolute;
+        top:10px;
+        right: 10px;
+    }
+
+    .gnb {
+        overflow: hidden;
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        &__item{
+            font-size: 30px;
+
+            a {
+                display: flex;
+                align-items: center;
+                position: relative;
+                left: -50px;
+                transition: left 0.5s;
+
+                &:before{
+                    content: '';
+                    display: inline-block;
+                    position: relative;
+                    width: 50px;
+                    height: 50px;
+                    background: url(../images/menu-arrow.png) no-repeat center center / cover;
+                    margin-top: 5px;
+                }
+
+                &:hover {
+                    left: 0;
+                }
+            }
+        }
+    }
+
+    &__sns{
+        display: flex;
+        gap: 40px;
+        margin-top: 50px;
+
+        &-item{
+            color:$color-gray;
+            font-weight: 500;
+        }
+    }
+}
