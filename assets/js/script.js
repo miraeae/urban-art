@@ -1,9 +1,4 @@
 gsap.registerPlugin(ScrollTrigger);
-intro();
-project();
-merit();
-layout();
-
 
 // Lenis
 const lenis = new Lenis()
@@ -16,17 +11,85 @@ gsap.ticker.add((time)=>{
 
 gsap.ticker.lagSmoothing(0)
 
+// common
+function common() {
+    const textUps = document.querySelectorAll(".text-up");
+
+    textUps.forEach((textUp) => {
+        const typeSplit = new SplitType(textUp, {
+            types: "lines, words",
+            tagName: "span",
+        });
+
+        gsap.fromTo(typeSplit.words,{yPercent: 100}, {
+            scrollTrigger: {
+                trigger: textUp,
+                start: "-400 center",
+                end: "bottom center",
+                //markers: true,
+                scrub: 1,
+            }, yPercent: 0
+        })
+    })
+}
 
 
-// Intro
+// 0-1. Intro, Main
 function intro() {
-    const content = document.querySelector(".intro__content");
-    const horizontal = document.querySelector(".intro__content-inner");
-    const visual = document.querySelector(".visual");
+    // 0. Intro
+    const intro = document.querySelector(".intro");
+    const introTl = gsap.timeline();
+   
+    introTl
+    .to({}, {duration: 1})
+    .to(".intro", {yPercent: 100, ease: "ease-in", onComplete: () => onComplete()})
 
-    const introTl = gsap.timeline({
+    function onComplete() {
+        lenis.start();
+        intro.remove();
+        mainTl.play();
+    }
+
+    // 1. Main
+    const main = document.querySelector(".main");
+
+    // Split
+    const typeSplit = new SplitType(".main__label, .main__title", {
+        types: "lines, words, char",
+        tagName: "span",
+    });
+
+    // Anim
+    const mainTl = gsap.timeline({paused: true});
+
+    mainTl
+    .to(main, {opacity: 1})
+    .from(".visual__img-area", {opacity: 0, duration: 1.5})
+    .from(".main__title .char", {yPercent: 100, stagger: 0.1}, '<')
+    .from(".main__label .char", {yPercent: 100, stagger: 0.1}, '-=80%')
+    .from(".visual__img-area img", {scale: 1.2, duration: 1, ease: "ease-in"}, '<')
+    .from(".main__desc", {opacity: 0, duration: 1}, '-=80%')
+
+    gsap.fromTo(".visual__img-area", {"clip-path":"inset(0% 2%)"}, {
         scrollTrigger: {
-            trigger: content,
+            trigger: ".main",
+            start: "50 top",
+            endTrigger: ".visual",
+            end: "top top",
+            //markers: true,
+            scrub: 1,
+        },
+        "clip-path":"inset(0% 0%)"
+    })
+
+    // Horizontal Anim
+    const mainContent = document.querySelector(".main__content");
+    const mainContentInner = document.querySelector(".main__content-inner");
+    const mainContentVisual = document.querySelector(".visual");
+
+    const mainHorizTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: mainContent,
             start:"top top",
             end: "bottom bottom",
             //markers: true,
@@ -34,15 +97,15 @@ function intro() {
         }
     });
 
-    introTl
-    .to(horizontal, {
-        x: () => -(visual.offsetWidth - window.innerWidth),
+    mainHorizTl
+    .to(mainContentInner, {
+        x: () => -(mainContentVisual.offsetWidth - window.innerWidth),
     })
-    .to(".visual__about", {xPercent: -100}, '<')
+    .fromTo(".visual__about", {xPercent: 50}, {xPercent: -100}, '<')
     .to(".visual__always", {"--target": "0%"})
     
-    .to(horizontal, {
-        x: () => -(visual.offsetWidth - window.innerWidth) - window.innerWidth,})
+    .to(mainContentInner, {
+        x: () => -(mainContentVisual.offsetWidth - window.innerWidth) - window.innerWidth,})
     .to(".service__text-box", {yPercent: -100, duration: 1})
     .to(".service__img-wrap", {
         y: () => -(document.querySelector(".service__img-wrap").offsetHeight - window.innerHeight), 
@@ -53,7 +116,6 @@ function intro() {
 // Project
 function project() {
     const container = document.querySelector(".project__case");
-    const list = document.querySelector(".project__case-list");
     const item = gsap.utils.toArray(".project__case-item");
 
     const scrollTween = gsap.to(item, {
@@ -94,12 +156,44 @@ function project() {
 // }
 
 
-// Merit
-function merit(){
-    const meritTl = gsap.timeline({
+// Interior
+function promotion() {
+    // Promotion img
+    gsap.to(".promotion__img-wrap", {yPercent: -30,
+        scrollTrigger: {
+        trigger: ".promotion__img-wrap",
+        start:"-30% center",
+        end: "bottom bottom",
+        //markers: true,
+        scrub: 0,
+        }
+    })
+
+    // Promotion horizontal
+    const promoHorizTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".promotion__content",
+            start:"top top",
+            end: "bottom bottom",
+            scrub:1,
+        }
+    });
+
+    promoHorizTl
+    .to(".promotion__video-box video", {scale: 3})
+    .fromTo(".promotion__list", {xPercent: 100}, {xPercent: 0})
+    .to(".promotion__content", {
+        x: () => -(window.innerWidth)
+    })
+}
+
+
+// strength
+function strength(){
+    const strengthTl = gsap.timeline({
         defaults: { ease: "none" },
         scrollTrigger: {
-            trigger: '.merit',
+            trigger: '.strength',
             start: "0% 0%",
             end: "100% 100%",
             scrub: true,
@@ -107,23 +201,56 @@ function merit(){
         },
     });
     
-    meritTl
-    .to(".merit__item:nth-child(1)", {"clip-path": "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)"})
-    .to(".merit__item:nth-child(2)", {"clip-path": "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"}, '<')
-    .to(".merit__item:nth-child(2)", {"clip-path": "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)"})
-    .to(".merit__item:nth-child(3)", {"clip-path": "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"}, '<')
+    strengthTl
+    .to(".strength__item:nth-child(1)", {"clip-path": "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)"})
+    .to(".strength__item:nth-child(2)", {"clip-path": "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"}, '<')
+    .to(".strength__item:nth-child(2)", {"clip-path": "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)"})
+    .to(".strength__item:nth-child(3)", {"clip-path": "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"}, '<')
 };
 
 
 function layout() {
+    // Menu
+    const menuTl = gsap.timeline({paused: true});
+
+    menuTl
+    .to(".menu", {"z-index": "999"})
+    .to(".menu__inner", {width: "auto", height: "auto", top: 0, right: 0, duration: 0.5, ease:"none"}, '<')
+    .from(".menu__close", {y: 20, opacity: 0}, '<')
+    .from(".gnb__item", {y: 20, opacity: 0, stagger: 0.2})
+    .from(".menu__sns", {opacity: 0});
+
+    document.querySelector(".menu-open").addEventListener("click", () => {
+        menuTl.play();
+    })
+
+    document.querySelector(".menu__close").addEventListener("click", () => {
+        menuTl.reverse();
+    })
+
+
+    // footer
     gsap.to(".footer__info-bg", {
         "height": "100%",
         scrollTrigger: {
         trigger: ".footer__info",
         start:"top center",
-        end: "bottom bottom",
+        end: "top top",
         //markers: true,
         scrub:1,
         }
     })
 };
+
+
+
+
+common();
+layout();
+
+// Disable scrolling until the intro ends
+lenis.stop();
+intro();
+project();
+promotion();
+strength();
