@@ -152,31 +152,6 @@ function project() {
     })
 }
 
-//// Testimonial hover 개선 필요
-// function testimonial () {
-//     const testimonialList = document.querySelector(".testimonial__list");
-//     const testimonialItem = document.querySelectorAll(".testimonial__item > a");
-
-//     testimonialItem.forEach((item) => {
-//         const testimonialImg = item.querySelector(".testimonial__item-img");
-
-//         function mouseMove(e) {
-//             gsap.to(testimonialImg,{x: e.clientX, y: e.clientY, xPercent:-50, yPercent:-50, duration:0.1});
-//         }
-
-//         item.addEventListener("mouseenter", () => {
-//             gsap.to(testimonialImg, { autoAlpha: 1, duration: 0.2, ease: "power2.out" });
-//             document.addEventListener("mousemove", mouseMove);
-//         });
-
-//         item.addEventListener("mouseleave", (e) => {
-//             gsap.to(testimonialImg, { autoAlpha: 0, duration: 0.2, ease: "power2.out" });
-//             document.addEventListener("mousemove", mouseMove);
-//         });
-//     }); 
-// }
-
-
 // Promotion
 function promotion() {
     // Promotion img
@@ -293,17 +268,28 @@ function layout() {
         scrub:1,
         }
     })
+
+    document.addEventListener('mousemove', function(e) {
+        // 중심좌표 구하기
+        let mouseX = e.clientX - window.innerWidth / 2;
+        let mouseY = e.clientY - window.innerHeight / 2;
+    
+        gsap.to(document.querySelector('.footer__info-profile img'), {
+            x: mouseX / 50,
+            y: mouseY / 50
+        });
+    });
 };
 
-
-
-
-common();
-layout();
-
+document.addEventListener("DOMContentLoaded", () => {
 // Disable scrolling until the intro ends
 lenis.stop();
+
 intro();
 project();
 promotion();
 strength();
+
+common();
+layout();
+});
