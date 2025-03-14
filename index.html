@@ -12,7 +12,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/split-type"></script>
     <script src="./assets/js/script.js" defer></script>
-
 </head>
 <body>
     <div class="skip-menu">
@@ -24,56 +23,66 @@
                 <em>urbanchic/</em>design
             </a>
         </div>
-        <button class="menu-trigger" aria-label="Open menu" aria-expanded="false">MENU</button>
+        <button class="menu-open menu-trigger" aria-label="Open menu" aria-expanded="false">MENU</button>
         <div class="menu">
             <button class="menu__close menu-trigger" aria-label="Close menu">Close</button>
-            <nav class="gnb">
-                <ul class="gnb__list">
-                    <li class="gnb__item">
-                        <a href="#main" class="gnb__link">Main</a>
-                    </li>
-                    <li class="gnb__item">
-                        <a href="#about" class="gnb__link">About the details</a>
-                    </li>
-                    <li class="gnb__item">
-                        <a href="#projects" class="gnb__link">Projects</a>
-                    </li>
-                    <li class="gnb__item">
-                        <a href="#testimonials" class="gnb__link">Testimonials</a>
-                    </li>
-                    <li class="gnb__item">
-                        <a href="#contact" class="gnb__link">Contact</a>
-                    </li>
-                </ul>
-            </nav>
-            <ul class="menu__sns">
-                <li class="menu__sns-item">
-                    <a class="line-btn" href="#" rel="noopener" target="_blank">Instagram</a>
-                </li>
-                <li class="menu__sns-item">
-                    <a class="line-btn" href="#" rel="noopener" target="_blank">Facebook</a>
-                </li>
-            </ul>
+            <div class="menu__inner">
+                <div class="menu__wrap">
+                    <nav class="gnb">
+                        <ul class="gnb__list">
+                            <li class="gnb__item">
+                                <a href="#main" class="gnb__link">Main</a>
+                            </li>
+                            <li class="gnb__item">
+                                <a href="#about" class="gnb__link">About the details</a>
+                            </li>
+                            <li class="gnb__item">
+                                <a href="#projects" class="gnb__link">Projects</a>
+                            </li>
+                            <li class="gnb__item">
+                                <a href="#testimonials" class="gnb__link">Testimonials</a>
+                            </li>
+                            <li class="gnb__item">
+                                <a href="#contact" class="gnb__link">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <ul class="menu__sns">
+                        <li class="menu__sns-item">
+                            <a class="line-btn" href="#" rel="noopener" target="_blank">Instagram</a>
+                        </li>
+                        <li class="menu__sns-item">
+                            <a class="line-btn" href="#" rel="noopener" target="_blank">Facebook</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </header>
     <main class="container">
-        <section id="main" class="sec intro">
-            <div class="intro__heading sec__heading">
-                <p class="intro__label">DESIGNER</p>
-                <h1 class="intro__title sec__title">URBAN—ART</h1>
-                <p class="intro__desc sec__desc">Bright appearance of your home for a bright life<br>
+        <section class="intro">
+            <h2 class="sr-only">Intro</h2>
+            <p class="intro__text">
+                <em>urbanchic/</em>design
+            </p>
+        </section>
+        <section id="main" class="sec main">
+            <div class="main__heading sec__heading">
+                <p class="main__label">DESIGNER</p>
+                <h1 class="main__title sec__title">URBAN—ART</h1>
+                <p class="main__desc sec__desc">Bright appearance of your home for a bright life<br>
                     Natural furniture and original paintings<br>
                     Unique style of urban luxury
                 </p>
             </div>
-            <div class="intro__content">
-                <div class="intro__content-inner sticky">
+            <div class="main__content">
+                <div class="main__content-inner sticky">
                     <div class="visual">
                         <div class="visual__img-area">
-                            <img src="./assets/images/intro.jpg" alt="">
+                            <img src="./assets/images/main.jpg" alt="">
                         </div>
                         <div class="visual__about">
-                            <img class="visual__about-img" src="./assets/images/intro-about.jpg" alt="">
+                            <img class="visual__about-img" src="./assets/images/main-about.jpg" alt="">
                             <div class="visual__about-text-box">
                                 <p class="visual__about-text">We create an interior design that is on trend</p>
                             </div>
@@ -81,8 +90,8 @@
                         <div class="visual__always">
                             <p class="visual__always-text">ALWAYS</p>
                             <div class="visual__always-img-wrap">
-                                <img class="visual__always-img" src="./assets/images/intro-always-01.jpg" alt="">
-                                <img class="visual__always-img" src="./assets/images/intro-always-02.jpg" alt="">
+                                <img class="visual__always-img" src="./assets/images/main-always-01.jpg" alt="">
+                                <img class="visual__always-img" src="./assets/images/main-always-02.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -123,33 +132,33 @@
                                 </ul>
                             </div>
                             <div class="service__text-bg">
-                                <img src="./assets/images/intro-service.jpg" alt="">
+                                <img src="./assets/images/main-service.jpg" alt="">
                             </div>
                         </div>
                         <div class="service__img-wrap">
                             <div class="service__img-box">
-                                <img src="./assets/images/intro-service-01.jpg" alt="">
+                                <img src="./assets/images/main-service-01.jpg" alt="">
                             </div>
                             <div class="service__img-box">
-                                <img src="./assets/images/intro-service-02.jpg" alt="">
+                                <img src="./assets/images/main-service-02.jpg" alt="">
                             </div>
                             <div class="service__img-box">
-                                <img src="./assets/images/intro-service-03.jpg" alt="">
+                                <img src="./assets/images/main-service-03.jpg" alt="">
                             </div>
                             <div class="service__img-box">
-                                <img src="./assets/images/intro-service-04.jpg" alt="">
+                                <img src="./assets/images/main-service-04.jpg" alt="">
                             </div>
                             <div class="service__img-box">
-                                <img src="./assets/images/intro-service-05.png" alt="">
+                                <img src="./assets/images/main-service-05.png" alt="">
                             </div>
                             <div class="service__img-box">
-                                <img src="./assets/images/intro-service-06.png" alt="">
+                                <img src="./assets/images/main-service-06.png" alt="">
                             </div>
                             <div class="service__img-box">
-                                <img src="./assets/images/intro-service-07.jpg" alt="">
+                                <img src="./assets/images/main-service-07.jpg" alt="">
                             </div>
                             <div class="service__img-box">
-                                <img src="./assets/images/intro-service-08.jpg" alt="">
+                                <img src="./assets/images/main-service-08.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -160,7 +169,7 @@
             <h2 class="sr-only">About the details</h2>
             <div class="about__content">
                 <div class="about__contact">
-                    <h3 class="about__contact-title sec__title">
+                    <h3 class="about__contact-title sec__title text-up">
                         REPLACING INTERIOR PARTS
                         WILL MAKE IT RELEVANT
                         EVEN AFTER 5 YEARS
@@ -172,11 +181,11 @@
                     <a href="#" class="about__contact-btn fill-btn">GET IN ToUCH</a>
                 </div>
                 <div class="about__order">
-                    <p class="about__order-text">
+                    <p class="about__order-text text-up">
                         ”We firmly believe that aesthetics
                         and an attractive living environment
                         with bright accents brings a positive
-                        effect into our lives” <span>— Anna Nicole</span>
+                        effect into our lives” <span class="about__order-name">— Anna Nicole</span>
                     </p>
                     <a href="#" class="about__order-btn fill-btn">ORDER A DeSIGN</a>
                 </div>
@@ -263,7 +272,7 @@
         <section id="testimonials" class="sec testimonial">
             <h2 class="sr-only">testimonials</h2>
             <div class="testimonial__heading sec__heading">
-                <h3 class="testimonial__title sec__title">Let's turn your home into a real masterpiece</h3>
+                <h3 class="testimonial__title sec__title text-up">Let's turn your home into a real masterpiece</h3>
                 <p class="testimonial__desc sec__desc">
                     Listen to the emotional words<br>
                     of our testimonials.
@@ -325,100 +334,101 @@
                 <img src="./assets/images/client-img.jpg" alt="">
             </div> -->
         </section>
-        <section class="sec interior">
+        <section class="sec promotion">
             <h2 class="sr-only">Order interior</h2>
-            <div class="interior__img-wrap">
+            <div class="promotion__img-wrap">
                 <img src="./assets/images/interior-01.jpg" alt="">
                 <img src="./assets/images/interior-02.jpg" alt="">
             </div>
-            <div class="interior__content">
-                <div class="interior__content-inner sticky">
-                    <div class="interior__video-box">
+            <div class="promotion__content">
+                <div class="promotion__content-inner sticky">
+                    <div class="promotion__video-box">
                         <video loop autoplay muted>
                             <source src="./assets/images/interior-bg.mp4">
                         </video>
                     </div>
-                    <ul class="interior__list">
-                        <li class="interior__item">
-                            <img class="interior__item-img" src="./assets/images/interior-list-01.jpg" alt="">
-                            <p class="interior__item-text">Interior design as in the picture and even better</p>
+                    <ul class="promotion__list">
+                        <li class="promotion__item">
+                            <img class="promotion__item-img" src="./assets/images/interior-list-01.jpg" alt="">
+                            <p class="promotion__item-text">Interior design as in the picture and even better</p>
                         </li>
-                        <li class="interior__item">
-                            <img class="interior__item-img" src="./assets/images/interior-list-02.jpg" alt="">
-                            <p class="interior__item-text">Project from gray walls to bathroom rug</p>
+                        <li class="promotion__item">
+                            <img class="promotion__item-img" src="./assets/images/interior-list-02.jpg" alt="">
+                            <p class="promotion__item-text">Project from gray walls to bathroom rug</p>
                         </li>
-                        <li class="interior__item">
-                            <img class="interior__item-img" src="./assets/images/interior-list-03.jpg" alt="">
-                            <p class="interior__item-text">Your design project is our implementation</p>
+                        <li class="promotion__item">
+                            <img class="promotion__item-img" src="./assets/images/interior-list-03.jpg" alt="">
+                            <p class="promotion__item-text">Your design project is our implementation</p>
                         </li>
                     </ul>
-                    <div class="interior__order">
-                        <div class="interior__order-content sec__heading">
-                            <h3 class="interior__order-title sec__title">
+                    <div class="promotion__order">
+                        <div class="promotion__order-content sec__heading">
+                            <h3 class="promotion__order-title sec__title">
                                 Order interior<br>
                                 design in two clicks
                             </h3>
-                            <p class="interior__order-desc sec__desc">
+                            <p class="promotion__order-desc sec__desc">
                                 We will listen carefully to your wishes<br>
                                 We will offer options according to your taste<br>
                                 Let's bring your dream home idea to life
                             </p>
-                            <a href="#" class="interior__order-btn fill-btn fill-btn--dark">GET IN ToUCH</a>
+                            <a href="#" class="promotion__order-btn fill-btn fill-btn--dark">GET IN ToUCH</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="sec merit">
-            <div class="merit__list-wrap sticky">
-                <ul class="merit__list sticky">
-                    <li class="merit__item">
-                        <div class="merit__item-text-box">
-                            <p class="merit__item-label">For body</p>
-                            <h4 class="merit__item-title">
+        <section class="sec strength">
+            <h2 class="sr-only">Our Strengths</h2>
+            <div class="strength__list-wrap sticky">
+                <ul class="strength__list sticky">
+                    <li class="strength__item">
+                        <div class="strength__item-text-box">
+                            <p class="strength__item-label">For body</p>
+                            <h4 class="strength__item-title">
                                 Harmony<br>
                                 OF textures
                             </h4>
                         </div>
-                        <div class="merit__item-img-box">
-                            <img src="./assets/images/merit-01.jpg" alt="">
+                        <div class="strength__item-img-box">
+                            <img src="./assets/images/strength-01.jpg" alt="">
                         </div>
                     </li>
-                    <li class="merit__item">
-                        <div class="merit__item-text-box">
-                            <p class="merit__item-label">For heart</p>
-                            <h4 class="merit__item-title">
+                    <li class="strength__item">
+                        <div class="strength__item-text-box">
+                            <p class="strength__item-label">For heart</p>
+                            <h4 class="strength__item-title">
                                 Colorful<br>
                                 combinations
                             </h4>
                         </div>
-                        <div class="merit__item-img-box">
-                            <img src="./assets/images/merit-02.jpg" alt="">
+                        <div class="strength__item-img-box">
+                            <img src="./assets/images/strength-02.jpg" alt="">
                         </div>
                     </li>
-                    <li class="merit__item">
-                        <div class="merit__item-text-box">
-                            <p class="merit__item-label">For the soul</p>
-                            <h4 class="merit__item-title">
+                    <li class="strength__item">
+                        <div class="strength__item-text-box">
+                            <p class="strength__item-label">For the soul</p>
+                            <h4 class="strength__item-title">
                                 Intriguing<br>
                                 Details
                             </h4>
                         </div>
-                        <div class="merit__item-img-box">
-                            <img src="./assets/images/merit-03.jpg" alt="">
+                        <div class="strength__item-img-box">
+                            <img src="./assets/images/strength-03.jpg" alt="">
                         </div>
                     </li>
                 </ul>
             </div>
-            <div class="merit__item-bg-wrap">
-                <div class="merit__item-bg">
-                    <img src="./assets/images/merit-01-bg.jpg" alt="">
+            <div class="strength__item-bg-wrap">
+                <div class="strength__item-bg">
+                    <img src="./assets/images/strength-01-bg.jpg" alt="">
                 </div>
-                <div class="merit__item-bg">
-                    <img src="./assets/images/merit-02-bg.jpg" alt="">
+                <div class="strength__item-bg">
+                    <img src="./assets/images/strength-02-bg.jpg" alt="">
                 </div>
-                <div class="merit__item-bg">
-                    <img src="./assets/images/merit-03-bg.jpg" alt="">
+                <div class="strength__item-bg">
+                    <img src="./assets/images/strength-03-bg.jpg" alt="">
                 </div>
             </div>
         </section>

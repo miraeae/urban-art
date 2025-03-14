@@ -30,12 +30,10 @@
 }
 
 @mixin noiseBg($opacity: 0.04, $z-index: unset) {
-  position: relative;
-
   &:before{
     content:'';
     position: absolute;
-    background: $color-bg url(../images/noise.gif) repeat 70px;
+    background:url(../images/noise.gif) repeat 70px;
     width: 100%;
     height: 100%;
     top:0;
