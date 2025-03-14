@@ -1,0 +1,68 @@
+html{
+    @include tablet {
+        font-size: 15px;
+    }
+    @include mobile {
+        font-size: 14px;
+    }
+}
+
+body {
+    font-family: "", "pretendard", sans-serif;
+    line-height: 1.5;
+}
+
+:root{
+    --grid-margin: 1.25rem;
+    --grid-spacing: clamp(3.5rem, 3.07rem + 2.14vw, 5rem); // 기본적으로 3.07rem + 2.14vw 따라가고, 3.5rem보다 작아지지 않고, 5rem보다 커지지않음
+}
+
+::-webkit-selection {
+    background: rgba(135, 135, 135, .35);
+    color:#fff;
+}
+::-moz-selection {
+    background: rgba(135, 135, 135, .35);
+    color:#fff;
+}
+::selection {
+    background: rgba(135, 135, 135, .35);
+    color:#fff;
+}
+
+.pc-only{
+    @include tablet {
+        display: none !important;
+    }
+}
+
+.tb-show{
+    display: none !important;
+    @include tablet {
+        display: block !important;
+    }
+}
+
+.mo-only{
+    display: none !important;
+    @include mobile {
+        display: block !important;
+    }
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: polygon(0 0, 0 0, 0 0);
+    white-space: nowrap;
+}
+
+.scroll-lock {
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    touch-action: none;
+}
