@@ -7,10 +7,25 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    --menu-width: 110px;
+    --menu-height: 45px;
+
+    @include mobile {
+        --menu-width: 80px;
+        --menu-height: 33px;
+    }
 
     &__logo {
         font-size: 1.25rem;
         font-weight: 300;
+
+        @include tablet {
+            font-size: 1.2rem;
+        }
+
+        @include mobile {
+            font-size: 1.1429rem;
+        }
         
         em{
             font-weight: 600;
@@ -20,14 +35,18 @@
 }
 
 .menu-trigger {
-    width: 110px;
-    height: 45px;
+    width: var(--menu-width);
+    height: var(--menu-height);
+    line-height: var(--menu-height);
     text-align: center;
-    line-height: 45px;
     background-color: $color-black;
     color: $color-white;
     font-size: 13px;
     text-transform: uppercase;
+
+    @include mobile {
+        font-size:10px;
+    }
 }
 
 .menu {
@@ -40,8 +59,8 @@
         position: absolute;
         background-color: $color-black;
         color: $color-white;
-        width: 110px;
-        height: 45px;
+        width: var(--menu-width);
+        height: var(--menu-height);
         top: 10px;
         right: 10px;
         overflow: hidden;
@@ -50,7 +69,7 @@
     &__wrap{
         display: flex;
         flex-direction: column;
-        padding: 60px 60px 40px 35px;
+        padding: 3.75rem 3.75rem 2.5rem 2.1875rem;
     }
 
     &__close {
@@ -69,22 +88,26 @@
         }
 
         &__item{
-            font-size: 30px;
+            font-size: 1.875rem;
             white-space: nowrap;
+
+            @include tablet {
+                font-size: 1.5625rem;
+            }
 
             a {
                 display: flex;
                 align-items: center;
                 position: relative;
-                left: -50px;
+                left: -3.125rem;
                 transition: left 0.5s;
 
                 &:before{
                     content: '';
                     display: inline-block;
                     position: relative;
-                    width: 50px;
-                    height: 50px;
+                    width: 3.125rem;
+                    height: 3.125rem;
                     background: url(../images/menu-arrow.png) no-repeat center center / cover;
                     margin-top: 5px;
                 }

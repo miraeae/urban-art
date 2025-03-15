@@ -59,7 +59,7 @@
             </div>
         </div>
     </header>
-    <main class="container">
+    <main id="container">
         <section class="intro">
             <h2 class="sr-only">Intro</h2>
             <p class="intro__text">
@@ -69,7 +69,7 @@
         <section id="main" class="sec main">
             <div class="main__heading sec__heading">
                 <p class="main__label">DESIGNER</p>
-                <h1 class="main__title sec__title">URBAN—ART</h1>
+                <h1 class="main__title">URBAN—ART</h1>
                 <p class="main__desc sec__desc">Bright appearance of your home for a bright life<br>
                     Natural furniture and original paintings<br>
                     Unique style of urban luxury
@@ -88,17 +88,18 @@
                             </div>
                         </div>
                         <div class="visual__always">
-                            <p class="visual__always-text">ALWAYS</p>
-                            <div class="visual__always-img-wrap">
-                                <img class="visual__always-img" src="./assets/images/main-always-01.jpg" alt="">
-                                <img class="visual__always-img" src="./assets/images/main-always-02.jpg" alt="">
+                            <div class="visual__always-inner">
+                                <p class="visual__always-text">ALWAYS</p>
                             </div>
                         </div>
                     </div>
                     <div class="service">
                         <div class="service__text-wrap">
+                            <div class="service__text-bg">
+                                <img src="./assets/images/main-service.jpg" alt="">
+                            </div>
                             <div class="service__text-box">
-                                <h3 class="service__title"><em>It's all</em> about<br> the details</h3>
+                                <h3 class="service__title sec__subtitle"><em>It's all</em> about<br> the details</h3>
                                 <ul class="service__list">
                                     <li>CEILING MOLDINGS</li>
                                     <li>CORNICES</li>
@@ -130,9 +131,6 @@
                                     <li>DESIGN SYSTEM</li>
                                     <li>MODULAR SHELVES</li>
                                 </ul>
-                            </div>
-                            <div class="service__text-bg">
-                                <img src="./assets/images/main-service.jpg" alt="">
                             </div>
                         </div>
                         <div class="service__img-wrap">
@@ -181,7 +179,7 @@
                     <a href="#" class="about__contact-btn fill-btn">GET IN ToUCH</a>
                 </div>
                 <div class="about__order">
-                    <p class="about__order-text text-up">
+                    <p class="about__order-text text-up sec__subtitle">
                         ”We firmly believe that aesthetics
                         and an attractive living environment
                         with bright accents brings a positive
@@ -198,7 +196,9 @@
             <h2 class="sr-only">Projects</h2>
             <div class="project__top">
                 <div class="project__heading sec__heading sticky">
-                    <h3 class="project__title sec__title">We create an interior with you in mind</h3>
+                    <h3 class="project__title sec__title">
+                        We create an interior<br>
+                        with you in mind</h3>
                     <p class="project__desc sec__desc">
                         Charming style, <span>sensual colors</span><br>
                         Spacious space <span>where everything is at hand</span><br>
@@ -229,39 +229,45 @@
             <div class="project__case">
                 <div class="project__case-inner sticky">
                     <ul class="project__case-list">
-                        <li class="project__case-item" tabindex="0" aria-haspopup="true" aria-expanded="false">
+                        <li class="project__case-item">
                             <div class="project__case-item-content">
                                 <p class="project__case-item-desc">There is a sense of calm and simplicity of perception in the space in the air.
                                     Each element serves its own function, nothing superfluous</p>
-                                <h4 class="project__case-item-title">
+                                <h4 class="project__case-item-title sec__subtitle">
                                     MINIMALSIM<br>
                                     BEDROOM
                                 </h4>
-                                <img src="./assets/images/project-case-01.jpg" alt="MINIMALSIM BEDROOM image">
+                                <div class="project__case-item-img">
+                                    <img src="./assets/images/project-case-01.jpg" alt="MINIMALSIM BEDROOM image">
+                                </div>
                             </div>
                             <a class="project__case-item-link" href="#"></a>
                         </li>
-                        <li class="project__case-item" tabindex="0" aria-haspopup="true" aria-expanded="false">
+                        <li class="project__case-item">
                             <div class="project__case-item-content">
                                 <p class="project__case-item-desc">There is a sense of calm and simplicity of perception in the space in the air.
                                     Each element serves its own function, nothing superfluous</p>
-                                <h4 class="project__case-item-title">
+                                <h4 class="project__case-item-title sec__subtitle">
                                     SCANDINAVIAN<br>
                                     CUISINE
                                 </h4>
-                                <img src="./assets/images/project-case-02.jpg" alt="SCANDINAVIAN CUISINE image">
+                                <div class="project__case-item-img">
+                                    <img src="./assets/images/project-case-02.jpg" alt="SCANDINAVIAN CUISINE image">
+                                </div>
                             </div>
                             <a class="project__case-item-link" href="#"></a>
                         </li>
-                        <li class="project__case-item" tabindex="0" aria-haspopup="true" aria-expanded="false">
+                        <li class="project__case-item">
                             <div class="project__case-item-content">
                                 <p class="project__case-item-desc">Harmony with nature in a cozy and natural space in which you feel calm.
                                     Eco-style implies an emphasis on biophilic elements — plants</p>
-                                <h4 class="project__case-item-title">
+                                <h4 class="project__case-item-title sec__subtitle">
                                     ECO-STYLE<br>
                                     LIVING ROOM
                                 </h4>
-                                <img src="./assets/images/project-case-03.jpg" alt="ECO-STYLE LIVING ROOM image">
+                                <div class="project__case-item-img">
+                                    <img src="./assets/images/project-case-03.jpg" alt="ECO-STYLE LIVING ROOM image">
+                                </div>
                             </div>
                             <a class="project__case-item-link" href="#"></a>
                         </li>
@@ -385,7 +391,7 @@
                     <li class="strength__item">
                         <div class="strength__item-text-box">
                             <p class="strength__item-label">For body</p>
-                            <h4 class="strength__item-title">
+                            <h4 class="strength__item-title sec__subtitle">
                                 Harmony<br>
                                 OF textures
                             </h4>
@@ -397,7 +403,7 @@
                     <li class="strength__item">
                         <div class="strength__item-text-box">
                             <p class="strength__item-label">For heart</p>
-                            <h4 class="strength__item-title">
+                            <h4 class="strength__item-title sec__subtitle">
                                 Colorful<br>
                                 combinations
                             </h4>
@@ -409,7 +415,7 @@
                     <li class="strength__item">
                         <div class="strength__item-text-box">
                             <p class="strength__item-label">For the soul</p>
-                            <h4 class="strength__item-title">
+                            <h4 class="strength__item-title sec__subtitle">
                                 Intriguing<br>
                                 Details
                             </h4>
@@ -447,7 +453,7 @@
                 <li>+49 (11) 176 70-62-88-05</li>
             </ul>
             <div class="footer__contact-btm">
-                <p class="footer__contact-text">IMPRESSUM</p>
+                <p class="footer__contact-text pc-only">IMPRESSUM</p>
                 <ul class="footer__contact-sns-list">
                     <li class="footer__contact-sns-item">
                         <a class="line-btn" href="#">INSTAGRAM</a>

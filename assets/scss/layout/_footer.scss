@@ -13,6 +13,10 @@
         background-color: $color-white;
         @include noiseBg;
 
+        @include tablet {
+            height:50vh;
+        }
+
         &-title{
             font-size: 16.5vw;
             line-height: 1;
@@ -20,15 +24,26 @@
             color: $color-white;
             position: relative;
             z-index: 2;
+            text-align: center;
         }
 
         &-profile{
             position: absolute;
             z-index: 3;
-            max-width: 250px;
+            max-width: calc(250/ 1920*100vw);
             top: 20vh;
             left: 50%;
             transform: translateX(-50%) rotate(10deg);
+            
+            @include tablet {
+                max-width: 200px;
+                top:90px;
+            }
+
+            @include mobile{
+                max-width: 120px;
+                top:75px;
+            }
         }
 
         &-bg{
@@ -51,13 +66,21 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 0 20px;
+        padding: 0 1.25rem;
 
         &-list {
             li {
-                font-size: 50px;
+                font-size: 3.125rem;
                 font-weight: 600;
                 line-height: 1.2;
+
+                @include tablet {
+                    font-size: 30px;
+                }
+
+                @include mobile {
+                    font-size: 20px;
+                }
             }
         }
 
@@ -66,8 +89,18 @@
             display: flex;
             justify-content: space-between;
             border-top: 1px solid rgba(255,255,255,0.2);
-            margin-top: 20px;
-            padding: 40px 0;
+            margin-top: 1.25rem;
+            padding: 2.5rem 0;
+
+            @include tablet {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            @include mobile {
+                gap: 1rem;
+                padding: 2rem 0;
+            }
         }
 
         &-text{
@@ -76,7 +109,12 @@
 
         &-sns-list{
             display: flex;
-            gap: 60px; 
+            gap: 3.75em;
+            justify-content: center;
+
+            @include tablet {
+                gap: 1.25rem;
+            }
         }
     }
 }

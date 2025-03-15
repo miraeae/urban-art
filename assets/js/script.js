@@ -87,30 +87,51 @@ function intro() {
     const mainContentInner = document.querySelector(".main__content-inner");
     const mainContentVisual = document.querySelector(".visual");
 
-    const mainHorizTl = gsap.timeline({
-        scrollTrigger: {
-            trigger: mainContent,
-            start:"top top",
-            end: "bottom bottom",
-            //markers: true,
-            scrub:1,
-        }
-    });
+    const mm = gsap.matchMedia();
 
-    mainHorizTl
-    .to(mainContentInner, {
-        x: () => -(mainContentVisual.offsetWidth - window.innerWidth),
+    mm.add({
+        isDesktop: `(min-width: 1025px)`,
+        isMobile: `(max-width:1024px)`
+    }, (context) => {
+        let { isDesktop, isMobile } = context.conditions;
+
+        if(isDesktop) {
+            const mainHorizTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: mainContent,
+                    start:"top top",
+                    end: "bottom bottom",
+                    //markers: true,
+                    scrub:1,
+                }
+            });
+        
+            mainHorizTl
+            .to(mainContentInner, {
+                x: () => -(mainContentVisual.offsetWidth - window.innerWidth),
+            })
+            .fromTo(".visual__about", {xPercent: 50}, {xPercent: -100}, '<')
+            .to(".visual__always", {"--target": "0%"})
+            
+            .to(mainContentInner, {
+                x: () => -(mainContentVisual.offsetWidth - window.innerWidth) - window.innerWidth,})
+            .to(".service__text-box", {yPercent: -100, duration: 1})
+            .to(".service__img-wrap", {
+                y: () => -(document.querySelector(".service__img-wrap").offsetHeight - window.innerHeight), 
+                duration: 1
+            }, '<')
+        } else {
+            gsap.to(".visual__always", {"--target": "0%",
+                scrollTrigger: {
+                trigger: ".visual__always",
+                start:"top top",
+                end: "bottom bottom",
+                //markers: true,
+                scrub: 0,
+                }
+            })
+        }
     })
-    .fromTo(".visual__about", {xPercent: 50}, {xPercent: -100}, '<')
-    .to(".visual__always", {"--target": "0%"})
-    
-    .to(mainContentInner, {
-        x: () => -(mainContentVisual.offsetWidth - window.innerWidth) - window.innerWidth,})
-    .to(".service__text-box", {yPercent: -100, duration: 1})
-    .to(".service__img-wrap", {
-        y: () => -(document.querySelector(".service__img-wrap").offsetHeight - window.innerHeight), 
-        duration: 1
-    }, '<')
 }
 
 // Project
@@ -156,7 +177,7 @@ function project() {
 // }
 
 
-// Interior
+// Promotion
 function promotion() {
     // Promotion img
     gsap.to(".promotion__img-wrap", {yPercent: -30,
@@ -169,6 +190,7 @@ function promotion() {
         }
     })
 
+    
     // Promotion horizontal
     const promoHorizTl = gsap.timeline({
         scrollTrigger: {
@@ -179,11 +201,29 @@ function promotion() {
         }
     });
 
-    promoHorizTl
-    .to(".promotion__video-box video", {scale: 3})
-    .fromTo(".promotion__list", {xPercent: 100}, {xPercent: 0})
-    .to(".promotion__content", {
-        x: () => -(window.innerWidth)
+    const mm = gsap.matchMedia();
+
+    mm.add({
+        isDesktop: `(min-width: 1025px)`,
+        isMobile: `(max-width:1024px)`
+    }, (context) => {
+        let { isDesktop, isMobile } = context.conditions;
+
+        if(isDesktop) {
+            promoHorizTl
+            .to(".promotion__video-box video", {scale: 3})
+            .fromTo(".promotion__list", {xPercent: 100}, {xPercent: 0})
+            .to(".promotion__content", {
+                x: () => -(window.innerWidth)
+            })
+        } else {
+            promoHorizTl
+            .to(".promotion__video-box video", {scale: 5})
+            .fromTo(".promotion__list", {yPercent: 120}, {yPercent: 0})
+            .to(".promotion__content", {
+                y: () => -(window.innerHeight)
+            })
+        }
     })
 }
 
@@ -211,6 +251,19 @@ function strength(){
 
 function layout() {
     // Menu
+    document.querySelectorAll(".gnb__item > a").forEach(link => {
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
     const menuTl = gsap.timeline({paused: true});
 
     menuTl
@@ -234,8 +287,8 @@ function layout() {
         "height": "100%",
         scrollTrigger: {
         trigger: ".footer__info",
-        start:"top center",
-        end: "top top",
+        start:"-50% center",
+        end: "top 30%",
         //markers: true,
         scrub:1,
         }
