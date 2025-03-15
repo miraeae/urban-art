@@ -112,7 +112,8 @@
                     margin-top: 5px;
                 }
 
-                &:hover {
+                &:hover,
+                &:focus {
                     left: 0;
                 }
             }

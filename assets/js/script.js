@@ -239,22 +239,52 @@ function layout() {
         });
     });
 
+    // trapFocus
+    const menu =  document.querySelector(".menu");
+    const menuOpen =  document.querySelector(".menu-open");
+    const meneClose = document.querySelector(".menu__close");
+    const menuLinks = menu.querySelectorAll("a, button");
+
+    function trapFocus(event) {
+        const firstElement = menuLinks[0];
+        const lastElement = menuLinks[menuLinks.length - 1];
+
+        if (event.key === "Tab") {
+            if (event.shiftKey) { // 첫 요소에서 Shift + Tab 하면 마지막 요소로 이동
+                if (document.activeElement === firstElement) {
+                    event.preventDefault();
+                    lastElement.focus();
+                }
+            } else { // 마지막 요소 다음 다시 첫 요소로 이동
+                if (document.activeElement === lastElement) {
+                    event.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        }
+    }
+
     const menuTl = gsap.timeline({paused: true});
 
     menuTl
-    .to(".menu", {"z-index": "999"})
+    .to(menu, {"z-index": "999"})
     .to(".menu__inner", {width: "auto", height: "auto", top: 0, right: 0, duration: 0.5, ease:"none"}, '<')
-    .from(".menu__close", {y: 20, opacity: 0}, '<')
-    .from(".gnb__item", {y: 20, opacity: 0, stagger: 0.2})
-    .from(".menu__sns", {opacity: 0});
+    .from(meneClose, {y: 20, autoAlpha: 0}, '<')
+    .from(".gnb__item", {y: 20, autoAlpha: 0, stagger: 0.2})
+    .from(".menu__sns", {autoAlpha: 0});
 
-    document.querySelector(".menu-open").addEventListener("click", () => {
+    menuOpen.addEventListener("click", () => {
         menuTl.play();
+        menuOpen.setAttribute("aria-expanded", "true");
+        document.addEventListener("keydown", trapFocus);
     })
 
-    document.querySelector(".menu__close").addEventListener("click", () => {
+    meneClose.addEventListener("click", () => {
         menuTl.reverse();
+        menuOpen.setAttribute("aria-expanded", "false");
+        document.removeEventListener("keydown", trapFocus);
     })
+
 
 
     // footer

@@ -886,6 +886,10 @@
     }
 
     &__order {
+        position: relative;
+        z-index: 1;
+        background: $color-white;
+
         &-content{
             position: relative;
             &:before,
