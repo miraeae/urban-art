@@ -309,6 +309,14 @@ function layout() {
             y: mouseY / 50
         });
     });
+
+    const linkNone = document.querySelectorAll("a[href='#']");
+    
+    linkNone.forEach((link) => {
+        link.addEventListener("click", (event) => {
+            event.preventDefault();
+        })
+    })
 };
 
 document.addEventListener("DOMContentLoaded", () => {
