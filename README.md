@@ -2,7 +2,7 @@
 
 JS, GSAP를 활용하여 다양한 인터랙션과 모션 구현을 중점으로 한 반응형 클론 코딩 사이트입니다.
 
-- 제작기간: 2025.03.14 ~ 2025.03.15 + Refactor
+- 제작기간: 2025.03.14 ~ 2025.03.16
 - 사용언어: HTML, SCSS, JavaScript
 - 라이브러리: GSAP(ScrollTrigger), Lenis, Split Type
 - 유형: 반응형
@@ -13,8 +13,9 @@ JS, GSAP를 활용하여 다양한 인터랙션과 모션 구현을 중점으로
 ## 💡 Point
 1. [가로 세로 스크롤](#1-가로-세로-스크롤)
 2. [공통 텍스트 효과](#2-공통-텍스트-효과)
-3. [마스크 슬라이드](#3-마스크-슬라이드)
-4. [마우스에 따라 움직이는 이미지](#4-마우스에-따라-움직이는-이미지)
+3. [호버 시 따라다니는 이미지](#3-호버-시-따라다니는-이미지)
+4. [마스크 슬라이드](#4-마스크-슬라이드)
+5. [마우스에 따라 움직이는 이미지](#5-마우스에-따라-움직이는-이미지)
 
 ***
 
@@ -77,7 +78,6 @@ mainHorizTl
 |window.innerWidth/Height|브라우저 윈도우의 콘텐츠 영역 너비/높이|콘텐츠|브라우저의 UI 요소 (scrollbar, 주소창, 툴바 등)|
 |window.outerWidth/Height|브라우저 화면의 전체 너비/높이|scrollbar, 주소창, 툴바|없음|
 
-
 ***
 
 ### 2. 공통 텍스트 효과
@@ -111,7 +111,78 @@ textUps.forEach((textUp) => {
 
 ***
 
-### 3. 마스크 슬라이드
+### 3. 호버 시 따라다니는 이미지
+
+요소에 호버 시 해당하는 이미지가 나타나고, 마우스를 따라다니는 효과를 구현하였습니다.
+
+![Image](https://github.com/user-attachments/assets/20f4c130-7596-469f-8f53-3802422ca79a)
+![Image](https://github.com/user-attachments/assets/86ff06f0-b822-421b-a386-7af98fa93565)
+
+#### 🎨 CSS
+
+처음에는 보이지 않도록 설정 후 ``on``되면 나타나도록 작성해주었습니다.
+
+```
+&__cursor{
+    position: fixed;
+    ...
+    opacity: 0;
+    height:0;
+    transition: height 0.5s, opacity 0.5s 0.1s;
+
+    &.on{
+        height: 296px;
+        opacity: 1;
+    }
+
+    &-img {
+        ...
+        height: 0;
+        transition: height 1s;
+
+        &.on {
+            height: 100%;
+        }
+    }
+}
+```
+
+#### 💻 JavaScript
+
+마우스 움직임을 감지하여 커서가 마우스를 따라 이동하도록 만드는 코드를 작성하였습니다.
+
+```
+document.addEventListener("mousemove",(e) => { 
+    cursor.style.top = `${e.clientY}px` // 마우스의 X 좌표
+    cursor.style.left = `${e.clientX}px` // 마우스의 Y 좌표
+    cursor.animate({
+        top : `${e.clientY}px`, left : `${e.clientX}px` //마우스 위치로 cursor를 2초(2000ms) 동안 부드럽게 이동
+    },2000)
+});
+```
+
+마우스를 특정 요소 위에 올리면 해당 요소의 index 값과 동일한 값을 가진 ``cursorImg``에 ``on`` 클래스가 추가되도록 해주었습니다.
+
+```
+itemLinks.forEach((link, index) => {
+    const cursorImg = cursorImgs[index];
+
+    link.addEventListener("mouseover", () => { 
+        cursor.classList.add("on");
+        cursorImg.classList.add("on");
+    });
+
+    link.addEventListener("mouseout", () => { 
+        cursor.classList.remove("on");
+        cursorImg.classList.remove("on");
+    });
+});
+```
+
+
+***
+
+### 4. 마스크 슬라이드
 
 ``clip-path`` 속성을 활용하여 슬라이드 효과를 구현했습니다.
 
@@ -144,7 +215,7 @@ strengthTl
 
 ***
 
-### 4. 마우스에 따라 움직이는 이미지
+### 5. 마우스에 따라 움직이는 이미지
 
 사용자의 마우스 움직임에 따라 이미지가 이동하는 효과를 적용했습니다.
 
@@ -171,4 +242,3 @@ document.addEventListener('mousemove', function(e) {
 
 - mouseX / 50: 마우스가 100px 이동하면, 이미지가 100 / 50 = 2px만큼 이동
 - mouseX / 100: 마우스가 100px 이동하면, 이미지가 100 / 100 = 1px만큼 이동
-
