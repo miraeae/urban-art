@@ -1,9 +1,13 @@
 /* Container */
-/* Sec Common*/
+#container{
+    position: relative;
+    @include noiseBg;
+}
+
+/* Sec Common */
 .sec {
     position: relative;
     text-transform: uppercase;
-    @include noiseBg;
 
     &__heading {
         display: flex;

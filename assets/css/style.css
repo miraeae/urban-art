@@ -584,12 +584,10 @@ body {
 }
 
 /* Container */
-/* Sec Common*/
-.sec {
+#container {
   position: relative;
-  text-transform: uppercase;
 }
-.sec:before {
+#container:before {
   content: "";
   position: absolute;
   background: url(../images/noise.gif) repeat 70px;
@@ -599,6 +597,12 @@ body {
   left: 0;
   opacity: 0.04;
   z-index: unset;
+}
+
+/* Sec Common */
+.sec {
+  position: relative;
+  text-transform: uppercase;
 }
 .sec__heading {
   display: -webkit-box;
@@ -1869,4 +1873,4 @@ body {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-}
+}/*# sourceMappingURL=style.css.map */
