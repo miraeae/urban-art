@@ -150,6 +150,65 @@ function project() {
             scrub:1,
         }
     })
+
+    const cursor = document.querySelector(".project__case-cursor");
+    const cursorImgs = document.querySelectorAll(".project__case-cursor-img img");
+    const itemLinks = document.querySelectorAll(".project__case-item a");
+
+    // 마우스 따라다니기
+    document.addEventListener("mousemove",(e) => { 
+        cursor.style.top = `${e.clientY}px`
+        cursor.style.left = `${e.clientX}px`
+        cursor.animate({
+            top : `${e.clientY}px`, left : `${e.clientX}px`
+        },2000)
+    });
+
+    // 호버 시 커서, 이미지 on
+    itemLinks.forEach((link, index) => {
+        const cursorImg = cursorImgs[index];
+    
+        link.addEventListener("mouseover", () => { 
+            cursor.classList.add("on");
+            cursorImg.classList.add("on");
+        });
+    
+        link.addEventListener("mouseout", () => { 
+            cursor.classList.remove("on");
+            cursorImg.classList.remove("on");
+        });
+    });
+    
+}
+
+function testimonial() {
+    const cursor = document.querySelector(".testimonial__cursor");
+    const cursorImgs = document.querySelectorAll('.testimonial__cursor-img');
+    const itemLinks = document.querySelectorAll(".testimonial__item a");
+
+    // 마우스 따라다니기
+    document.addEventListener("mousemove",(e) => { 
+        cursor.style.top = `${e.clientY}px`
+        cursor.style.left = `${e.clientX}px`
+        cursor.animate({
+            top : `${e.clientY}px`, left : `${e.clientX}px`
+        },2000)
+    });
+
+    // 호버 시 커서, 이미지 on
+    itemLinks.forEach((link, index) => {
+        const cursorImg = cursorImgs[index];
+    
+        link.addEventListener("mouseover", () => { 
+            cursor.classList.add("on");
+            cursorImg.classList.add("on");
+        });
+    
+        link.addEventListener("mouseout", () => { 
+            cursor.classList.remove("on");
+            cursorImg.classList.remove("on");
+        });
+    });
 }
 
 // Promotion
@@ -285,8 +344,6 @@ function layout() {
         document.removeEventListener("keydown", trapFocus);
     })
 
-
-
     // footer
     gsap.to(".footer__info-bg", {
         "height": "100%",
@@ -320,14 +377,15 @@ function layout() {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-// Disable scrolling until the intro ends
-lenis.stop();
+    // Disable scrolling until the intro ends
+    lenis.stop();
 
-intro();
-project();
-promotion();
-strength();
+    intro();
+    project();
+    testimonial();
+    promotion();
+    strength();
 
-common();
-layout();
+    common();
+    layout();
 });

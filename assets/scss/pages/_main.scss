@@ -663,6 +663,54 @@
                 }
             }
         }
+
+        &-cursor{
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            width: 150px;
+            overflow: hidden;
+            transform: scale(0);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s, transform 0.5s;
+
+            &.on{
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            &-img{
+                position: relative;
+                width: 150px;
+                height: 70px;
+
+                img{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+
+                    &.on {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            &-text {
+                font-size: 1.4vw;
+                letter-spacing: -0.1em;
+                text-align: center;
+                line-height: 1;
+                color: $color-black;
+                background-color: $color-white;
+                white-space: nowrap;
+            }
+        }
     }
 }
 
@@ -688,7 +736,6 @@
         position: relative;
         margin-top: 6.25rem;
         border-bottom: 1px solid rgba(255,255,255,.4);
-
     }
 
     &__item {
@@ -745,35 +792,36 @@
         }
     }
 
-    &-hover{
+    // 호버 시 이미지 on
+    &__cursor{
         position: fixed;
         top: 0;
         left: 0;
-        width: 200px;
-        height: 296px;
-        overflow: hidden;
-        object-fit: cover;
-        z-index: 99;
+        z-index: 999;
         opacity: 0;
-        //visibility: hidden;
-        //pointer-events: none;
-    }
+        width: 200px;
+        height:0;
+        overflow: hidden;
+        pointer-events: none;
+        transition: height 0.5s, opacity 0.5s 0.1s;
 
-    &__item-img{
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 200px;
-        height: 296px;
-        overflow: hidden;
-        object-fit: cover;
-        z-index: 99;
-        position: fixed;
-        opacity: 0;
-        visibility: hidden;
+        &.on{
+            height: 296px;
+            opacity: 1;
+        }
+
+        &-img {
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            transition: height 1s;
+
+            &.on {
+                height: 100%;
+            }
+        }
     }
 }
-
 
 .promotion{
     &__img-wrap{
