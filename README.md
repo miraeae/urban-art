@@ -47,9 +47,9 @@ GSAP의 ScrollTrigger를 활용하여 특정 스크롤 지점에서 애니메이
 
 콘텐츠가 총 두 개로 나뉘며, 중간 애니메이션이 포함되어 있습니다.
 
-1. 첫번째 콘텐츠 영역만큼 x 방향으로 이동한 후 애니메이션이 실행됩니다.
+1. 첫번째 콘텐츠(visual) 영역만큼 x 방향으로 이동한 후 애니메이션이 실행됩니다.
 2. 중간 애니메이션이 완료되면 다시 x 방향으로 이동하여 두번째 콘텐츠가 보여집니다.
-3. 두번째 콘텐츠는 y 방향으로 이동합니다.
+3. 두번째 콘텐츠(service)는 y 방향으로 이동합니다.
 
 ```
 mainHorizTl
@@ -61,8 +61,8 @@ mainHorizTl
 
 2️⃣ .to(mainContentInner, {
       x: () => -(mainContentVisual.offsetWidth - window.innerWidth) - window.innerWidth,})
-    .to(".service__text-box", {yPercent: -100, duration: 1})
-3️⃣ .to(".service__img-wrap", {
+3️⃣ .to(".service__text-box", {yPercent: -100, duration: 1})
+    .to(".service__img-wrap", {
       y: () => -(document.querySelector(".service__img-wrap").offsetHeight - window.innerHeight), 
       duration: 1
     }, '<')
