@@ -85,6 +85,11 @@
         &__list {
             display: flex;
             flex-direction: column;
+            gap: 5px;
+
+            @include tablet {
+                gap: 0;
+            }
         }
 
         &__item{
@@ -108,8 +113,15 @@
                     position: relative;
                     width: 3.125rem;
                     height: 3.125rem;
-                    background: url(../images/menu-arrow.png) no-repeat center center / cover;
-                    margin-top: 5px;
+                    background: url(../images/menu-arrow.webp) no-repeat left center / 45px;
+
+                    @include tablet {
+                        background-size: 38px;
+                    }
+
+                    @include mobile {
+                        background-size: 35px;
+                    }
                 }
 
                 &:hover,
